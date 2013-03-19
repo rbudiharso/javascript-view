@@ -1,11 +1,12 @@
 self.port.on("processSource", function() {
-  var body = document.body;
-  var pre1 = body.children[0];
-  var pre2 = document.createElement('pre');
-  var code = document.createElement('code');
+  var body = document.body,
+  pre1 = body.children[0],
+  pre2 = document.createElement('pre'),
+  code = document.createElement('code'),
+  lineHeight, lineCount, lineNumberWrapper;
 
-  body.setAttribute('style', 'margin: 0;');
-  code.setAttribute('style', 'word-wrap: normal;');
+  body.style.margin = 0;
+  code.style.wordWrap = 'normal';
 
   code.setAttribute('data-language', 'javascript');
   code.textContent = js_beautify(pre1.textContent, {
@@ -25,4 +26,20 @@ self.port.on("processSource", function() {
 
   body.replaceChild(pre2, pre1);
   Rainbow.color();
+
+  lineHeight = parseInt(window.getComputedStyle(code, null).lineHeight, 10);
+  lineCount = Math.ceil(code.offsetHeight / lineHeight);
+
+  lineNumberWrapper = document.createElement('ol');
+  lineNumberWrapper.setAttribute('class', 'line-number');
+
+  for (var i = 0; i < lineCount; i++) {
+    var lineNumber = document.createElement('li');
+    lineNumber.textContent = i + 1;
+    lineNumberWrapper.appendChild(lineNumber);
+  }
+  pre2.insertBefore(lineNumberWrapper, pre2.firstChild);
+
+  var lineNumberWidth = lineNumberWrapper.lastChild.offsetWidth;
+  pre2.style.paddingLeft = (lineNumberWidth + 20) + 'px';
 });
