@@ -10,6 +10,9 @@ for deminify and beautify javascript
 
 # Changelog
 
+## version 1.1.0
+- add line number
+
 ## Version 1.0.1
 - use textContent rather than innerHTML
 - fix bug when '&&' is escaped into '& &amp;'
