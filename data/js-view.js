@@ -8,8 +8,19 @@ self.port.on("processSource", function() {
   code.setAttribute('style', 'word-wrap: normal;');
 
   code.setAttribute('data-language', 'javascript');
-  code.setAttribute('data-disable-lines', 'true');
-  code.innerHTML = js_beautify(pre1.innerHTML);
+  code.textContent = js_beautify(pre1.textContent, {
+    'unescape_strings': true,
+    'jslint_happy': true,
+    'brace_style': 'collapse',
+    'break_chained_methods': false,
+    'indent_scripts': 'normal',
+    'indent_size': 4,
+    'keep_array_indentation': false,
+    'preserve_newlines': true,
+    'space_after_anon_function': true,
+    'space_before_conditional': true
+  });
+  // code.innerHTML = pre1.innerHTML;
 
   pre2.appendChild(code);
 
