@@ -8,3 +8,11 @@ beautify and syntax-highlight the javascript file.
 2. [beautify.js](https://github.com/einars/js-beautify/blob/master/beautify.js)
 for deminify and beautify javascript
 
+# Changelog
+
+## Version 1.0.1
+- use textContent rather than innerHTML
+- fix bug when '&&' is escaped into '& &amp;'
+
+## Version 1.0
+- Initial commit

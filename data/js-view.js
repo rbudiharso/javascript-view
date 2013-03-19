@@ -20,7 +20,6 @@ self.port.on("processSource", function() {
     'space_after_anon_function': true,
     'space_before_conditional': true
   });
-  // code.innerHTML = pre1.innerHTML;
 
   pre2.appendChild(code);
 
