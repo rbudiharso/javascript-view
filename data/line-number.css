@@ -1,9 +1,9 @@
-pre {
+pre.jsv {
   position: relative;
   margin: 0;
   padding: 0;
 }
-code {
+pre.jsv code {
   line-height: 18px;
   word-wrap: normal;
 }
