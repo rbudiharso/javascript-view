@@ -10,6 +10,12 @@ for deminify and beautify javascript
 
 # Changelog
 
+## version 1.1.2
+- add overflow-x scroll to prevent long line gets wrapped and messes up the line number
+
+## version 1.1.1
+- fix bug when viewing html page which ends in .js in its url (https://github.com/rahmat-budiharso/javascript-view/issues/1)
+
 ## version 1.1.0
 - add line number
 
