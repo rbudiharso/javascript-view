@@ -1,18 +1,19 @@
-self.port.on("processSource", function() {
-    var content = document.contentType;
-    if (content === 'application/javascript' || content === 'application/x-javascript' || content === 'text/plain') {
-        var body = document.body,
-            pre1 = body.children[0],
-            pre2 = document.createElement('pre'),
-            code = document.createElement('code'),
-            lineHeight, lineCount, lineNumberWrapper, linkStyle;
+self.port.on("processSource", function () {
+    var body = document.body,
+    pre1 = body.children[0],
+    pre = document.createElement('pre'),
+    code = document.createElement('code'),
+    content = document.contentType,
+    contentIsAcceptable = function(content) {
+        return (content === 'application/javascript') ||
+        (content === 'application/x-javascript') ||
+        (content === 'text/plain') ||
+        (content === 'application/json')
+    };
 
-        body.style.margin = 0;
-        code.style.wordWrap = 'normal';
-
-        pre2.setAttribute('class', 'jsv');
-
-        code.setAttribute('data-language', 'javascript');
+    if (contentIsAcceptable(content)) {
+        pre.setAttribute('class', 'line-numbers');
+        code.setAttribute('class', 'language-javascript');
         code.textContent = js_beautify(pre1.textContent, {
             'unescape_strings': true,
             'jslint_happy': true,
@@ -26,25 +27,12 @@ self.port.on("processSource", function() {
             'space_before_conditional': true
         });
 
-        pre2.appendChild(code);
+        pre.appendChild(code);
+        body.replaceChild(pre, pre1);
 
-        body.replaceChild(pre2, pre1);
-        Rainbow.color();
+        Prism.highlightAll();
 
-        lineHeight = parseInt(window.getComputedStyle(code, null).lineHeight, 10);
-        lineCount = Math.ceil(code.offsetHeight / lineHeight);
-
-        lineNumberWrapper = document.createElement('ol');
-        lineNumberWrapper.setAttribute('class', 'line-number');
-
-        for (var i = 0; i < lineCount; i++) {
-            var lineNumber = document.createElement('li');
-            lineNumber.textContent = i + 1;
-            lineNumberWrapper.appendChild(lineNumber);
-        }
-        pre2.insertBefore(lineNumberWrapper, pre2.firstChild);
-
-        var lineNumberWidth = lineNumberWrapper.lastChild.offsetWidth;
-        pre2.style.paddingLeft = (lineNumberWidth + 20) + 'px';
-    }
+        bgColor = window.getComputedStyle(document.getElementsByTagName('pre')[0]).backgroundColor;
+        document.getElementsByTagName('html')[0].style.backgroundColor = bgColor;
+    };
 });
