@@ -1,4 +1,4 @@
-self.port.on("processSource", function () {
+setTimeout(function() {
     var body = document.body,
     pre1 = body.children[0],
     pre = document.createElement('pre'),
@@ -31,8 +31,5 @@ self.port.on("processSource", function () {
         body.replaceChild(pre, pre1);
 
         Prism.highlightAll();
-
-        bgColor = window.getComputedStyle(document.getElementsByTagName('pre')[0]).backgroundColor;
-        document.getElementsByTagName('html')[0].style.backgroundColor = bgColor;
-    };
-});
+    }
+}, 0);
