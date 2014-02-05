@@ -30,7 +30,7 @@ self.port.on("processSource", function () {
         pre.appendChild(code);
         body.replaceChild(pre, pre1);
 
-        Prism.highlightAll();
+        Prism.highlightAll(true);
 
         bgColor = window.getComputedStyle(document.getElementsByTagName('pre')[0]).backgroundColor;
         document.getElementsByTagName('html')[0].style.backgroundColor = bgColor;
