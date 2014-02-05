@@ -3,7 +3,7 @@
     "license": "MPL 2.0",
     "author": "Rahmat Budiharso",
     "contributors": ["Erik Vold <evold@mozilla.com>"],
-    "version": "1.2.1",
+    "version": "1.2.2",
     "fullName": "JavaScript View",
     "id": "jid1-u9RbFp9JcoEGGw",
     "description": "A JavaScript source highlighter."
