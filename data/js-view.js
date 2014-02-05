@@ -1,4 +1,4 @@
-self.port.on("processSource", function () {
+setTimeout(function() {
     var body = document.body,
     pre1 = body.children[0],
     pre = document.createElement('pre'),
@@ -30,9 +30,6 @@ self.port.on("processSource", function () {
         pre.appendChild(code);
         body.replaceChild(pre, pre1);
 
-        Prism.highlightAll(true);
-
-        bgColor = window.getComputedStyle(document.getElementsByTagName('pre')[0]).backgroundColor;
-        document.getElementsByTagName('html')[0].style.backgroundColor = bgColor;
-    };
-});
+        Prism.highlightAll();
+    }
+}, 0);

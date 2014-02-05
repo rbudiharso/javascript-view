@@ -2,8 +2,9 @@
     "name": "javascript-view",
     "license": "MPL 2.0",
     "author": "Rahmat Budiharso",
+    "contributors": ["Erik Vold <evold@mozilla.com>"],
     "version": "1.2.1",
-    "fullName": "Javascript View",
+    "fullName": "JavaScript View",
     "id": "jid1-u9RbFp9JcoEGGw",
-    "description": "Javacsript source highlighter"
+    "description": "A JavaScript source highlighter."
 }
